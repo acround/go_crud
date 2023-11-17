@@ -1,0 +1,27 @@
+<!-- search.html -->
+{{ define "layout" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Search</title>
+</head>
+<body>
+    <h1>User Search Results</h1>
+    <ul>
+        {{ range . }}
+        <li>
+            {{ .FirstName }} {{ .LastName }} ({{ .Email }})
+            <form action="/welcome" method="post">
+                <input type="hidden" name="email" value="{{ .Email }}">
+                <button type="submit">Welcome</button>
+            </form>
+        </li>
+        {{ end }}
+    </ul>
+</body>
+</html>
+{{ end }}
+
